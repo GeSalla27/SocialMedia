@@ -1,0 +1,49 @@
+<br />
+<h2 class="text-center">Bem Vindo!</h2>
+<form class="form mt-4" (ngSubmit)="login()" #loginForm="ngForm">
+    <div class="form-group">
+        <input
+            class="form-control"
+            type="text"
+            placeholder="Nome Usuário"
+            [(ngModel)]="user"
+            name="user"
+            #userField="ngModel"
+            required
+        />
+        <app-message
+            *ngIf="userField.invalid && userField.touched"
+            message="Usuário Obrigatório!"
+        ></app-message>
+    </div>
+    <div class="form-group">
+        <input
+            class="form-control"
+            type="password"
+            placeholder="Senha"
+            [(ngModel)]="password"
+            name="password"
+            #passwordField="ngModel"
+            required
+        />
+    </div>
+    <app-message
+        *ngIf="passwordField.invalid && passwordField.touched"
+        message="Senha Obrigatória!"
+    ></app-message>
+    <br />
+    <div>
+        <button
+            type="submit"
+            class="btn btn-primary btn-block"
+            [disabled]="loginForm.invalid"
+        >
+            Login
+        </button>
+    </div>
+</form>
+<br />
+<p class="col text-center">
+    Novo por aqui?
+    <a [routerLink]="['/home/newUser']"> Se cadastre agora</a>
+</p>
