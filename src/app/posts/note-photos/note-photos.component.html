@@ -1,0 +1,17 @@
+<p class="text-center text-muted" *ngIf="!posts.length">Sem posts</p>
+
+<div class="row">
+    <div *ngFor="let post of posts" class="col-4">
+        <a [routerLink]="['/posts', post.id]"></a>
+        <app-card>
+            <app-post [url]="post.url" [description]="post.description">
+            </app-post>
+            <i aria-hidden="true" class="fa fa-heart-o fa-1x mr2">{{
+                post.likes
+            }}</i>
+            <i aria-hidden="true" class="fa fa-comment-o fa-1x mr2">{{
+                post.comments
+            }}</i>
+        </app-card>
+    </div>
+</div>

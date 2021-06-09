@@ -1,30 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
-import { UserModal } from 'src/app/model/user';
-import { GlobalsService } from 'src/app/utils/globals.service';
 import { first, map, switchMap } from 'rxjs/operators';
+import { UserModal } from 'src/app/models/user';
+import { environment } from 'src/environments/environment';
+
+const apiUrl = environment.apiUrl;
 
 @Injectable({
     providedIn: 'root',
 })
 export class UserService {
-    constructor(
-        private _httpClient: HttpClient,
-        private _globals: GlobalsService
-    ) {}
+    constructor(private _httpClient: HttpClient) {}
 
     signUp(user: UserModal) {
-        return this._httpClient.post(
-            this._globals.urlApiUser + '/user/signup/',
-            user
-        );
+        return this._httpClient.post(`${apiUrl}/user/signup/`, user);
     }
 
     hasUser(name: string) {
-        return this._httpClient.get(
-            this._globals.urlApiUser + `/user/exists/${name}`
-        );
+        return this._httpClient.get(`${apiUrl}/user/exists/${name}`);
     }
 
     validateFormHasUser() {

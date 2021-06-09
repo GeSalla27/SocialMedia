@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { GlobalsService } from '../utils/globals.service';
 import { map } from 'rxjs/operators';
 import { UserAuthService } from './user/user-auth.service';
+import { environment } from 'src/environments/environment';
+
+const apiUrl = environment.apiUrl;
 
 @Injectable({
     providedIn: 'root',
@@ -11,7 +13,6 @@ import { UserAuthService } from './user/user-auth.service';
 export class AuthService {
     constructor(
         private _httpClient: HttpClient,
-        private _globals: GlobalsService,
         private _userService: UserAuthService
     ) {}
 
@@ -19,7 +20,7 @@ export class AuthService {
     auth(user: string, password: string): Observable<any> {
         return this._httpClient
             .post(
-                this._globals.urlApiUser + '/user/login',
+                `${apiUrl}/user/login`,
                 {
                     userName: user,
                     password: password,
