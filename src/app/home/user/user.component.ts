@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserModal } from 'src/app/models/user';
+import { UserModel } from 'src/app/models/user';
 import {
     fieldTinyValidator,
     userPasswordValidator,
@@ -47,7 +47,7 @@ export class User implements OnInit {
         //Valida se o form esta valido
         if (this.newUserForm.valid) {
             //Pega um json do form e transforma no obj usuario
-            const newUser = this.newUserForm.getRawValue() as UserModal;
+            const newUser = this.newUserForm.getRawValue() as UserModel;
 
             this._userService.signUp(newUser).subscribe(
                 () => {

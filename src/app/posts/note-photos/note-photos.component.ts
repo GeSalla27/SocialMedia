@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Posts } from 'src/app/models/post';
+import { PostModel, Posts } from 'src/app/models/post';
 
 @Component({
     selector: 'app-note-photos',

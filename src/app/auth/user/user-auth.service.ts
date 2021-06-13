@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import jwtDecode from 'jwt-decode';
 import { BehaviorSubject } from 'rxjs';
-import { UserModal } from 'src/app/models/user';
+import { UserModel } from 'src/app/models/user';
 import { TokenService } from '../token.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class UserAuthService {
-    private userSubject = new BehaviorSubject<UserModal>({});
+    private userSubject = new BehaviorSubject<UserModel>({});
 
     constructor(private _tokenService: TokenService) {
         if (this._tokenService.hasToken()) {
@@ -18,7 +18,7 @@ export class UserAuthService {
 
     private decodeJWT() {
         const token = this._tokenService.getToken();
-        const user = jwtDecode(token) as UserModal;
+        const user = jwtDecode(token) as UserModel;
 
         this.userSubject.next(user);
     }

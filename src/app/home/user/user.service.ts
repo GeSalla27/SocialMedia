@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { first, map, switchMap } from 'rxjs/operators';
-import { UserModal } from 'src/app/models/user';
+import { UserModel } from 'src/app/models/user';
 import { environment } from 'src/environments/environment';
 
 const apiUrl = environment.apiUrl;
@@ -13,7 +13,7 @@ const apiUrl = environment.apiUrl;
 export class UserService {
     constructor(private _httpClient: HttpClient) {}
 
-    signUp(user: UserModal) {
+    signUp(user: UserModel) {
         return this._httpClient.post(`${apiUrl}/user/signup/`, user);
     }
 

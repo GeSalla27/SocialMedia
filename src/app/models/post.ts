@@ -1,4 +1,4 @@
-export interface PostModal {
+export interface PostModel {
     id: number;
     url: string;
     description: string;
@@ -8,4 +8,4 @@ export interface PostModal {
     userId: number;
 }
 
-export type Posts = Array<PostModal>;
+export type Posts = Array<PostModel>;
